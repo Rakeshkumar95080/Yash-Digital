@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ST Digital - Global Music Distribution</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 20px 40px;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #ffcc00;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background: #ffcc00;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav button:hover {
+      background: #fff;
+    }
+
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
+
+    .hero a {
+      background: #ffcc00;
+      color: #000;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .hero a:hover {
+      background: #fff;
+    }
+
+    .platforms {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .platforms a {
+      color: #ffcc00;
+      font-size: 24px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .platforms a:hover {
+      color: #fff;
+    }
+
+    .player-section {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    audio {
+      width: 80%;
+      max-width: 400px;
+      outline: none;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.6);
+      font-size: 14px;
+    }
+
+    /* Login/Register Modal */
+    #modal {
+      display:none; 
+      position:fixed; 
+      top:0; 
+      left:0; 
+      width:100%; 
+      height:100%; 
+      background:#000000cc; 
+      justify-content:center; 
+      align-items:center;
+      z-index: 2000;
+    }
+
+    #modal-box {
+      background:#fff; 
+      color:#000; 
+      padding:30px; 
+      border-radius:10px; 
+      max-width:400px; 
+      width:90%;
+    }
+
+    #modal-box h2 {
+      margin-bottom: 15px;
+    }
+
+    #modal-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    #modal-box button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #1f1c2c;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    #modal-box .close-btn {
+      background: #ccc;
+      color: #000;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+      .hero p {
+        font-size: 16px;
+      }
+      .platforms a {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Yash Digital</div>
+    <nav>
+      <button onclick="openLogin()">Sign In</button>
+      <button onclick="openRegister()">Register</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Distribute Your Music Worldwide</h1>
+    <p>Get your tracks on Spotify, Apple Music, YouTube, and 150+ platforms. Fast, reliable, and global. Join ST Digital and make your music heard everywhere.</p>
+    <a href="#get-started">Get Started Now</a>
+
+    <div class="platforms">
+      <a href="#"><i class="fab fa-spotify"></i></a>
+      <a href="#"><i class="fab fa-apple"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-soundcloud"></i></a>
+      <a href="#"><i class="fab fa-amazon"></i></a>
+    </div>
+  </section>
+
+  <section class="player-section">
+    <h2>🎵 Featured Track Preview</h2>
+    <audio controls>
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+  </section>
+
+  <footer>
+    &copy; 2025 Yash Digital Music Distribution. All Rights Reserved.
+  </footer>
+
+  <!-- Login/Register Modal -->
+  <div id="modal">
+    <div id="modal-box">
+      <h2 id="modalTitle">Login</h2>
+      <input type="email" placeholder="Email" />
+      <input type="password" placeholder="Password" />
+      <button>Submit</button><br />
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function openLogin() {
+      document.getElementById("modal").style.display = "flex";
+      document.getElementById("modalTitle").innerText = "Login";
+    }
+
+    function openRegister() {
+      document.getElementById("modal").style.display = "flex";
+      document.getElementById("modalTitle").innerText = "Register";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
